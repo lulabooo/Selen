@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CartTest {
@@ -21,7 +20,6 @@ class CartTest {
 
     @AfterEach
     void tearDown() {
-        driver.quit();
         driver = null;
     }
 
@@ -33,7 +31,7 @@ class CartTest {
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.tagName("button")).click();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = driver.findElement(By.className("order-success")).getText();
+        String actual = driver.findElement(By.className("order-success")).getText().trim();
         assertEquals(expected, actual);
     }
 }
